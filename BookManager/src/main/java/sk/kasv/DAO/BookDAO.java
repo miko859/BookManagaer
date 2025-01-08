@@ -3,17 +3,18 @@ package sk.kasv.DAO;
 import java.util.List;
 
 import sk.kasv.entity.Book;
+import sk.kasv.entity.Status;
 
 public interface BookDAO {
-    Book findById(int id);
+    Book findBookById(int id);
 
     List<Book> findAll();
 
-    void save(Book book);
+    void saveBook(Book book);
 
-    void update(Book book);
+    void updateBook(Book book);
 
-    void delete(int id);
+    void deleteBook(int id);
 
-    List<Book> findByStatus(Status status);
+    List<Book> findBookByStatus(Status status);
 }
