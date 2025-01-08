@@ -21,9 +21,9 @@ public class UserDAOImpl implements UserDAO {
         try {
             return entityManager.createQuery("SELECT u FROM User u WHERE u.username = :username", User.class)
                     .setParameter("username", username)
-                    .getSingleResult();//ze ti najde len jedneho pouzivatela s tym menom , som myslela ze to urobim na viac ale nedame pouzivat to iste meno ked uz existuje a vybavene :)
+                    .getSingleResult();//ze ti najde len jedneho pouzivatela s tym menom viac nam ne treba :)
         } catch (Exception e) {
-            return null; // KED NENAJDE POUZIVATELA VARTI TI NULU A NIE EXCEPTION
+            return null; // KED NENAJDE POUZIVATELA tak VARTI TI NULU A NIE EXCEPTION
         }
     }
 
@@ -42,7 +42,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void deleteUserById(int id) { //som dala podla id lebo mi to prislo lahsie nez podla mena (zmensuje ti sancu prejklepu v mene pocas delitu)
+    public void deleteUserById(int id) { //som dala podla id lebo mi to prislo lahsie nez podla mena (zmensuje ti sancu preklepu v mene pocas vymazovania)
         User user = entityManager.find(User.class, id);
         if (user != null) {
             entityManager.remove(user);
