@@ -10,7 +10,5 @@ public interface StatusDAO {
 
     List<Status> findAll();
 
-    void save(Status status);
-    
-    void deleteById(int id);
+    // som vymazala save a delete lebo mi to dajak nedalo zmysel ked ze je to len >parameter< ku knihe 
 }
