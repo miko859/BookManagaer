@@ -15,10 +15,8 @@ export class LoginComponent {
 
   onLogin() {
     if (this.authService.login(this.username, this.password)) {
-      // If login is successful, redirect to appropriate page
       this.errorMessage = '';
     } else {
-      // If login fails, show an error message
       this.errorMessage = 'Invalid credentials!';
     }
   }

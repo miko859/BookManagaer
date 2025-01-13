@@ -1,37 +1,49 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-  private adminCredentials = { username: 'admin', password: '1245' };
+  private baseUrl = 'http://localhost:8080/api/auth';
 
-  constructor(private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
-  login(username: string, password: string): boolean {
-    // Check if the username and password match the admin credentials
-    if (username === this.adminCredentials.username && password === this.adminCredentials.password) {
-      localStorage.setItem('userType', 'admin');
-      this.router.navigate(['/admin']);
-      return true;
-    }
-    // If credentials are not admin, it's treated as a regular user login
-    localStorage.setItem('userType', 'user');
-    this.router.navigate(['/']);
-    return true;
+
+  login(username: string, password: string): Observable<any> {
+    return this.http.post(`${this.baseUrl}/login`, { username, password }, { responseType: 'text' })
+      .pipe(
+        tap((token: string) => {
+
+          localStorage.setItem('authToken', token);
+
+          const userType = username === 'admin' ? 'admin' : 'user';
+          localStorage.setItem('userType', userType);
+
+          this.router.navigate([userType === 'admin' ? '/admin' : '/']);
+        })
+      );
   }
 
   logout() {
+    localStorage.removeItem('authToken');
     localStorage.removeItem('userType');
     this.router.navigate(['/']);
   }
 
-  getUserType() {
-    return localStorage.getItem('userType');
+  getToken(): string | null {
+    return localStorage.getItem('authToken');
   }
 
-  isAdmin() {
-    return this.getUserType() === 'admin';
+
+  isLoggedIn(): boolean {
+    return !!this.getToken();
+  }
+
+  isAdmin(): boolean {
+    return localStorage.getItem('userType') === 'admin';
   }
 }

@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class BookService {
-  private baseUrl = 'http://localhost:3000/books'; // Replace with backend URL in the future
+  private baseUrl = 'http://localhost:3000/books';
 
   constructor(private http: HttpClient) {}
 

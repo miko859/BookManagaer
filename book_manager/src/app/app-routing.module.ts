@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '', component: MainPageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'admin/add-book', component: AddBookPageComponent },
-  { path: 'admin', component: AdminMainPageComponent },  // Admin route with guard
+  { path: 'admin', component: AdminMainPageComponent },
 ];
 
 @NgModule({
