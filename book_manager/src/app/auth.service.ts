@@ -8,12 +8,14 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost;8080/api/auth';
+  private apiUrl = 'http://localhost:8080/api';
 
   constructor(private http: HttpClient, private router: Router) {}
+
   login(username: string, password: string): Observable<any> {
     return this.http.post(this.apiUrl, { username, password });
   }
+
 
   logout() {
     localStorage.removeItem('authToken');
