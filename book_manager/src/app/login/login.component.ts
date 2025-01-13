@@ -14,10 +14,18 @@ export class LoginComponent {
   constructor(private authService: AuthService) {}
 
   onLogin() {
-    if (this.authService.login(this.username, this.password)) {
-      this.errorMessage = '';
-    } else {
-      this.errorMessage = 'Invalid credentials!';
-    }
+    this.authService.login(this.username, this.password).subscribe({
+      next: (response) => {
+
+        console.log('Login successful:', response);
+        this.errorMessage = '';
+      },
+      error: (error) => {
+
+        console.error('Login failed:', error);
+        this.errorMessage = 'Invalid credentials!';
+      }
+    });
   }
 }
+

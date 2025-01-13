@@ -8,24 +8,11 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AuthService {
-  private baseUrl = 'http://localhost:8080/api/auth';
+  private apiUrl = 'http://localhost;8080/api/auth';
 
   constructor(private http: HttpClient, private router: Router) {}
-
-
   login(username: string, password: string): Observable<any> {
-    return this.http.post(`${this.baseUrl}/login`, { username, password }, { responseType: 'text' })
-      .pipe(
-        tap((token: string) => {
-
-          localStorage.setItem('authToken', token);
-
-          const userType = username === 'admin' ? 'admin' : 'user';
-          localStorage.setItem('userType', userType);
-
-          this.router.navigate([userType === 'admin' ? '/admin' : '/']);
-        })
-      );
+    return this.http.post(this.apiUrl, { username, password });
   }
 
   logout() {
