@@ -31,7 +31,7 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @PostMapping
+    @PostMapping("/save")
     public void saveUser(@RequestBody User user) {
         userService.saveUser(user);
     }

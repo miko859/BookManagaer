@@ -38,7 +38,7 @@ public class BookController {
     }
 
     @PostMapping
-    public void saveBook(@RequestBody Book book) { // @RequestBody - parsuje JSON na objekt  a prida tam data co patria do objektu
+    public void saveBook(@RequestBody Book book) { 
         bookService.saveBook(book);
     }
 
