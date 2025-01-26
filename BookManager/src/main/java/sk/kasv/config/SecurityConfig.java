@@ -1,6 +1,7 @@
 package sk.kasv.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -20,18 +21,16 @@ public class SecurityConfig {
         this.jwtRequestFilter = jwtRequestFilter;
     }
 
-    @Bean
+ @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .csrf().disable()
             .authorizeRequests()
-                .requestMatchers("/api/auth/**").permitAll() // Allow public access to auth endpoints
-                .anyRequest().authenticated() // Require authentication for other endpoints
+                .requestMatchers("/api/**").permitAll() // Allow public access to auth endpoints
+                .requestMatchers(HttpMethod.POST, "/api/books").hasRole("ADMIN") // Ensure the POST request to /api/books requires authentication
+                .anyRequest().authenticated() // Other requests require authentication
                 .and()
-            .sessionManagement().disable() // Stateless session management
-
-            // Enable CORS globally
-            .cors().and();
+            .sessionManagement().disable(); // Stateless session management
 
         // Add the JWT filter before Spring's UsernamePasswordAuthenticationFilter
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
