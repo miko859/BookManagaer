@@ -6,13 +6,13 @@
     <button (click)="sortBooks('status')">Show Available</button>
     <button (click)="resetBooks()">Reset</button>
   </div>
+
   <div class="logout-container">
     <button class="logout-button" (click)="logout()">Log Out</button>
   </div>
-  
 
   <div *ngIf="isAdmin()" class="add-book-button">
-    <button (click)="navigateToAddBook()">Add Book</button>
+    <button class="btn-add-book" (click)="navigateToAddBook()">+ Add Book</button>
   </div>
 
   <div class="book-list">
@@ -21,6 +21,15 @@
       <p><strong>Author:</strong> {{ book.author }}</p>
       <p><strong>ISBN:</strong> {{ book.isbn }}</p>
       <p><strong>Status:</strong> {{ book.status?.name || 'Unknown' }}</p>
+
+      <div *ngIf="isAdmin()" class="admin-actions">
+        <button class="btn-edit" (click)="updateBook(book)">
+          <i class="fas fa-pencil-alt"></i> 
+        </button>
+        <button class="btn-delete" (click)="deleteBook(book.id)">
+          <i class="fas fa-trash-alt"></i> 
+        </button>
+      </div>
     </div>
   </div>
 </div>

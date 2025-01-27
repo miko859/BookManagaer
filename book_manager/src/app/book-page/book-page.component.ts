@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class BookPageComponent implements OnInit {
   books: Book[] = [];
   originalBooks: Book[] = [];
+  isEditMode: boolean = false; 
 
   constructor(private bookService: BookService, private authService: AuthService, private router: Router) {}
 
@@ -51,5 +52,33 @@ export class BookPageComponent implements OnInit {
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/login']);
+  }
+
+  toggleEditMode(): void {
+    this.isEditMode = !this.isEditMode;
+  }
+
+  updateBook(book: Book): void {
+    this.bookService.updateBook(book).subscribe(
+      (response: Book) => {
+        console.log('Book updated successfully', response);
+        this.router.navigate(['/books']);
+      },
+      (error: any) => {
+        console.error('Error updating book', error);
+      }
+    );
+  }
+
+  deleteBook(id: number): void {
+    this.bookService.deleteBook(id).subscribe(
+      (response: any) => {
+        console.log('Book deleted successfully', response);
+        this.books = this.books.filter(book => book.id !== id); 
+      },
+      (error: any) => {
+        console.error('Error deleting book', error);
+      }
+    );
   }
 }
