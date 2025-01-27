@@ -27,10 +27,22 @@
         <button class="edit-button" (click)="navigateToUpdateBook(book.id)">
           <i class="fa fa-pencil-alt"></i> 
         </button>
-        <button class="delete-button" (click)="deleteBook(book.id)">
-          <i class="fa fa-trash"></i> 
+        <button (click)="confirmDelete(book.id)" class="delete-button">
+          <i class="fa fa-trash"></i>
         </button>
       </div>
     </div>
   </div>
+
+
+  <div class="modal" [ngClass]="{ 'show': isModalVisible }" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h3>Are you sure you want to delete this book?</h3>
+      <p>Once deleted, this action cannot be undone.</p>
+      <div class="modal-actions">
+        <button (click)="deleteBook()">Yes, delete</button>
+        <button (click)="closeModal()">Cancel</button>
+      </div>
+    </div>
+
 </div>

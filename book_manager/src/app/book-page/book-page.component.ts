@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
 export class BookPageComponent implements OnInit {
   books: Book[] = [];
   originalBooks: Book[] = [];
+  isModalVisible: boolean = false;
+  bookIdToDelete: number = 0;
+
 
   constructor(private bookService: BookService, private authService: AuthService, private router: Router) {}
 
@@ -34,13 +37,14 @@ export class BookPageComponent implements OnInit {
     this.router.navigate(['/admin/book', bookId]); // Redirect to update page
   }
 
-  deleteBook(bookId: number): void {
-    this.bookService.deleteBook(bookId).subscribe(
-      (response: any) => {
-        console.log('Book deleted successfully', response);
+  deleteBook(): void {
+    this.bookService.deleteBook(this.bookIdToDelete).subscribe(
+      () => {
+        console.log('Book deleted successfully');
+        this.isModalVisible = false;
         this.router.navigate(['/books']);
       },
-      (error: any) => {
+      (error) => {
         console.error('Error deleting book', error);
       }
     );
@@ -61,5 +65,16 @@ export class BookPageComponent implements OnInit {
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/login']);
+  }
+
+  //objavi sa
+  confirmDelete(bookId: number): void {
+    this.bookIdToDelete = bookId;
+    this.isModalVisible = true;
+  }
+
+  //neobjavi sa
+  closeModal(): void {
+    this.isModalVisible = false;
   }
 }
