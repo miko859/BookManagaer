@@ -6,6 +6,10 @@
     <button (click)="sortBooks('status')">Show Available</button>
     <button (click)="resetBooks()">Reset</button>
   </div>
+  <div class="logout-container">
+    <button class="logout-button" (click)="logout()">Log Out</button>
+  </div>
+  
 
   <div *ngIf="isAdmin()" class="add-book-button">
     <button (click)="navigateToAddBook()">Add Book</button>

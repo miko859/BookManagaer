@@ -11,14 +11,14 @@ import { Router } from '@angular/router';
 })
 export class BookPageComponent implements OnInit {
   books: Book[] = [];
-  originalBooks: Book[] = []; 
+  originalBooks: Book[] = [];
 
   constructor(private bookService: BookService, private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.bookService.getBooks().subscribe(data => {
       this.books = data;
-      this.originalBooks = [...data]; 
+      this.originalBooks = [...data];
     });
   }
 
@@ -45,6 +45,11 @@ export class BookPageComponent implements OnInit {
   }
 
   resetBooks(): void {
-    this.books = [...this.originalBooks]; 
+    this.books = [...this.originalBooks];
+  }
+
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }

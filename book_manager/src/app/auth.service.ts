@@ -24,9 +24,8 @@ export class AuthService {
     return localStorage.getItem('role') === 'ADMIN';
   }
 
-  logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('role');
-    this.router.navigate(['/login']);
+  logout(): void {
+    localStorage.clear(); // Clear all data from local storage
   }
+  
 }

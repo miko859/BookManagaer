@@ -19,8 +19,8 @@ export class AddBookPageComponent {
   };
 
   statuses: Status[] = [
-    { id: 1, name: 'available' },
-    { id: 2, name: 'borrowed' }
+    { id: 1, name: 'Available' },
+    { id: 2, name: 'Borrowed' }
   ];
 
   constructor(
