@@ -1,0 +1,64 @@
+.main-page {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f0f4f8;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-page h1 {
+  font-size: 3rem;
+  color: #333;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.main-page p {
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 600px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.main-page .login-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  background-color: #273b6c;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.main-page .login-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.main-page .login-btn:active {
+  background-color: #004080;
+  transform: translateY(0);
+}
+
+.main-page .illustration {
+  max-width: 400px;
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+}
+
+.main-page footer {
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #888;
+}

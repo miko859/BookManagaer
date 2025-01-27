@@ -1,0 +1,22 @@
+<div class="book-page">
+  <h2>Books</h2>
+
+  <div class="sort-options">
+    <button (click)="sortBooks('title')">Sort A-Z</button>
+    <button (click)="sortBooks('status')">Show Available</button>
+    <button (click)="resetBooks()">Reset</button>
+  </div>
+
+  <div *ngIf="isAdmin()" class="add-book-button">
+    <button (click)="navigateToAddBook()">Add Book</button>
+  </div>
+
+  <div class="book-list">
+    <div class="book-card" *ngFor="let book of books" (click)="navigateToAdminBook(book.id)">
+      <h3>{{ book.title }}</h3>
+      <p><strong>Author:</strong> {{ book.author }}</p>
+      <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+      <p><strong>Status:</strong> {{ book.status?.name || 'Unknown' }}</p>
+    </div>
+  </div>
+</div>

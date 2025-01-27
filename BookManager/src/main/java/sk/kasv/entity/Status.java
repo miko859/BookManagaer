@@ -1,52 +1,49 @@
 package sk.kasv.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "status")
+@Table(name = "statuses")
 public class Status {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "status")
-    private String status;
+    @Column(name = "name")
+    private String name;
 
-    public Status() {
-        
+
+
+
+public Status() {
     }
 
-    public Status(String status) {
-        this.status = status;
+    public Status(String name) {
+        this.name = name;
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id){
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getStatus (){
-        return status;
+    public String getName() {
+        return name;
     }
 
-    public void setStatus(String status){
-        this.status = status;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
         return "Status " +
-               "\n    id = " + id +
-               ",\n    status = '" + status + '\'' +
-               "\n}";
+                "\n    id = " + id +
+                ",\n    name = '" + name + '\'' +
+                "\n";
     }
 }

@@ -33,4 +33,8 @@ public class UserService {
     public List<User> getAllUsers() {
         return userDAO.findAllUsers();
     }
+
+    public String getUserRole(String username) {
+        return userDAO.getUserRole(username);
+    }
 }

@@ -19,14 +19,20 @@ public class JwtUtil {
     private String SECRET_KEY;
 
     // Generate Token
-    public String generateToken(String username) {
+    public String generateToken(String username, String role) {
         Map<String, Object> claims = new HashMap<>();
+        claims.put("role", role);
         return createToken(claims, username);
     }
 
     // Extract Username from Token
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
+    }
+
+    // Extract Role from Token
+    public String extractRole(String token) {
+        return extractAllClaims(token).get("role", String.class);
     }
 
     // Extract Expiration Date
@@ -61,5 +67,4 @@ public class JwtUtil {
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
                 .compact();
     }
-
 }

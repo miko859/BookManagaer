@@ -1,0 +1,33 @@
+<div class="admin-main-page">
+  <h1>Admin - Book Management</h1>
+
+  <div class="centered">
+    <button class="create-btn" routerLink="/admin/add-book">Create Book</button>
+    <button (click)="deleteBook()">Delete Book</button>
+    <button (click)="logout()">Logout</button>
+  </div>
+
+  <table class="book-list">
+    <thead>
+    <tr>
+      <th>Book ID</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>1</td>
+      <td>Book</td>
+      <td>Miko</td>
+      <td>Available</td>
+      <td>
+        <button (click)="deleteBook()">Delete</button>
+      </td>
+    </tr>
+    <!-- Add more rows dynamically here -->
+    </tbody>
+  </table>
+</div>

@@ -45,4 +45,9 @@ public class UserController {
     public User getUserByUsername(@PathVariable String username) {
         return userService.getUserByUsername(username);
     }
+
+    @GetMapping("/role/{username}")
+    public String getUserRole(@PathVariable String username) {
+        return userService.getUserRole(username);
+    }
 }
