@@ -16,18 +16,19 @@
   </div>
 
   <div class="book-list">
-    <div class="book-card" *ngFor="let book of books" (click)="navigateToAdminBook(book.id)">
+    <div class="book-card" *ngFor="let book of books">
       <h3>{{ book.title }}</h3>
       <p><strong>Author:</strong> {{ book.author }}</p>
       <p><strong>ISBN:</strong> {{ book.isbn }}</p>
       <p><strong>Status:</strong> {{ book.status?.name || 'Unknown' }}</p>
 
-      <div *ngIf="isAdmin()" class="admin-actions">
-        <button class="btn-edit" (click)="updateBook(book)">
-          <i class="fas fa-pencil-alt"></i> 
+      
+      <div class="book-actions">
+        <button class="edit-button" (click)="navigateToUpdateBook(book.id)">
+          <i class="fa fa-pencil-alt"></i> 
         </button>
-        <button class="btn-delete" (click)="deleteBook(book.id)">
-          <i class="fas fa-trash-alt"></i> 
+        <button class="delete-button" (click)="deleteBook(book.id)">
+          <i class="fa fa-trash"></i> 
         </button>
       </div>
     </div>
