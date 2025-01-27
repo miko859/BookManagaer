@@ -85,6 +85,7 @@ h2 {
 }
 
 /* Book list */
+/* Book list */
 .book-list {
   display: flex;
   flex-wrap: wrap;
@@ -100,6 +101,7 @@ h2 {
   padding: 20px;
   width: 250px;
   transition: transform 0.2s;
+  position: relative; /* Added to position the buttons */
 }
 
 .book-card:hover {
@@ -109,6 +111,8 @@ h2 {
 .book-card h3 {
   margin-top: 0;
   color: #007bff;
+  position: relative; /* So the edit button can be placed relative to the title */
+  padding-right: 30px; /* Add some space for the pencil button */
 }
 
 .book-card p {
@@ -119,11 +123,15 @@ h2 {
 .book-card p strong {
   color: #333;
 }
+
 /* Styling for the edit and delete buttons */
 .book-actions {
+  position: absolute;
+  top: 10px; /* Adjust to place the pencil above the trash can */
+  right: 10px;
   display: flex;
-  justify-content: space-between;
-  gap: 10px;
+  flex-direction: column;
+  gap: 60px;
 }
 
 .edit-button,
@@ -149,7 +157,7 @@ h2 {
 }
 
 .edit-button:hover {
-  color: #7a06ff; 
+  color: #7a06ff; /* Purple on hover */
 }
 
 .delete-button {
@@ -157,7 +165,7 @@ h2 {
 }
 
 .delete-button:hover {
-  color: #c82333; 
+  color: #c82333; /* Red on hover */
 }
 
 .edit-button:focus,
