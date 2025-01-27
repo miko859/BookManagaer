@@ -30,20 +30,18 @@ export class AddBookPageComponent {
   ) {}
 
   addBook(): void {
-    console.log(this.book);
-    if (this.book.title && this.book.author && this.book.isbn && this.book.status.id) {
-      console.log(this.book)
+    if (/^\d{8}$/.test(this.book.isbn)) {
       this.bookService.addBook(this.book).subscribe(
-          (response: any) => {
-          console.log('Book added successfully', response);
+        () => {
+          console.log('Book added successfully');
           this.router.navigate(['/books']);
         },
-          (error: any) => {
+        (error) => {
           console.error('Error adding book', error);
-          this.errorService.showError('Something went wrong while adding book');
-
         }
       );
+    } else {
+      alert('ISBN must be exactly 8 digits.');
     }
   }
 }
