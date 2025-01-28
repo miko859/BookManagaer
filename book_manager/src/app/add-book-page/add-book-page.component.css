@@ -1,58 +1,147 @@
 .add-book-page {
-  padding: 20px;
-  background-color: #f9f9f9;
-  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #8090c3, #bab0bd);
+}
+
+.add-book-card {
+  width: 100%;
   max-width: 600px;
-  margin: 0 auto;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 h2 {
-  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
   color: #333;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
 }
 
 .form-group {
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 20px;
+  text-align: left;
 }
 
 label {
-  margin-bottom: 5px;
+  display: block;
+  margin-bottom: 8px;
   color: #555;
+  font-size: 14px;
 }
 
-input {
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  background: #f9f9f9;
   padding: 10px;
   border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box;
+  border-radius: 8px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-wrapper:hover,
+.input-wrapper:focus-within {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+input,
+select {
+  border: none;
+  outline: none;
+  flex: 1;
+  background: transparent;
+  font-size: 14px;
+  padding: 0;
+}
+
+input::placeholder {
+  color: #aaa;
 }
 
 button {
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
+  width: 100%;
+  max-width: 150px;
+  padding: 12px 16px;
+  font-size: 16px;
+  background: #bab0bd;
+  color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background: #8090c3;
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
 }
 
 .error-message {
   color: red;
   font-size: 12px;
   margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+  .add-book-card {
+    padding: 20px;
+    width: 90%;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .form-group label {
+    font-size: 13px;
+  }
+
+  input,
+  select {
+    font-size: 13px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .add-book-card {
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  input,
+  select {
+    font-size: 12px;
+  }
+
+  button {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
 }
