@@ -14,6 +14,7 @@ export class BookPageComponent implements OnInit {
   originalBooks: Book[] = [];
   isModalVisible: boolean = false;
   bookIdToDelete: number = 0;
+  searchQuery: string = '';
 
 
   constructor(private bookService: BookService, private authService: AuthService, private router: Router) {}
@@ -82,5 +83,14 @@ export class BookPageComponent implements OnInit {
   //neobjavi sa
   closeModal(): void {
     this.isModalVisible = false;
+  }
+
+  filterBooks(): void {
+    const query = this.searchQuery.toLowerCase();
+    this.books = this.originalBooks.filter(
+      (book) =>
+        book.title.toLowerCase().includes(query) ||
+        book.author.toLowerCase().includes(query)
+    );
   }
 }

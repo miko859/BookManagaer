@@ -13,6 +13,15 @@
       <button (click)="sortBooks('borrowed')">Show Borrowed</button>
       <button (click)="resetBooks()">Reset</button>
     </div>
+
+    <div class="search-container">
+      <input
+        type="text"
+        placeholder="Search books by title or author..."
+        [(ngModel)]="searchQuery"
+        (input)="filterBooks()"
+      />
+    </div>
     
     <div class="logout-container">
       <button class="logout-button" (click)="logout()">Log Out</button>
