@@ -38,6 +38,7 @@ export class AddBookPageComponent {
         },
         (error) => {
           console.error('Error adding book', error);
+          this.errorService.showError('Error adding book');
         }
       );
     } else {
