@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   username: string = '';
   password: string = '';
+  showHint: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -29,5 +30,9 @@ export class LoginComponent {
         this.errorService.showError('Invalid username or password');
       }
     );
+  }
+
+  toggleHint() {
+    this.showHint = !this.showHint;
   }
 }
