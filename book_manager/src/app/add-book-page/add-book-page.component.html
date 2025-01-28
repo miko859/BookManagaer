@@ -40,7 +40,9 @@
           <option *ngFor="let status of statuses" [value]="status.id">{{ status.name }}</option>
         </select>
       </div>
-      <button type="submit" [disabled]="bookForm.invalid || isbn.invalid">Add Book</button>
+      <div class="button-wrapper">
+        <button type="submit" [disabled]="bookForm.invalid || isbn.invalid">Add Book</button>
+      </div>
     </form>
   </div>
 </div>

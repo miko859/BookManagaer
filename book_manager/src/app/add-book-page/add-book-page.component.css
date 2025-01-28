@@ -95,6 +95,11 @@ button:active {
   transform: translateY(0);
 }
 
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .error-message {
   color: red;
   font-size: 12px;
