@@ -42,7 +42,9 @@ export class BookPageComponent implements OnInit {
       () => {
         console.log('Book deleted successfully');
         this.isModalVisible = false;
-        this.router.navigate(['/books']);
+        //vymaze tu knihu z pola takze ziaden refresh ne treba 
+        this.books = this.books.filter(book => book.id !== this.bookIdToDelete);
+        this.originalBooks = this.originalBooks.filter(book => book.id !== this.bookIdToDelete);
       },
       (error) => {
         console.error('Error deleting book', error);
@@ -50,12 +52,16 @@ export class BookPageComponent implements OnInit {
     );
   }
 
-  sortBooks(criteria: 'title' | 'status'): void {
+  sortBooks(criteria: 'title' | 'status' | 'borrowed' | 'author' ): void {
     if (criteria === 'title') {
       this.books.sort((a, b) => a.title.localeCompare(b.title));
     } else if (criteria === 'status') {
       this.books = this.books.filter(book => book.status?.name === 'Available');
-    }
+    } else if (criteria === 'borrowed') {
+      this.books = this.books.filter(book => book.status?.name === 'Borrowed'); 
+    } else if (criteria === 'author') {
+      this.books.sort((a, b) => a.author.localeCompare(b.author)); 
+    } 
   }
 
   resetBooks(): void {

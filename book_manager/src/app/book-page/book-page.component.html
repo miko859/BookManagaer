@@ -7,8 +7,10 @@
     </div>
 
     <div class="sort-buttons">
-      <button (click)="sortBooks('title')">Sort A-Z</button>
+      <button (click)="sortBooks('title')">Sort by Title</button>
+      <button (click)="sortBooks('author')">Sort by Author</button>
       <button (click)="sortBooks('status')">Show Available</button>
+      <button (click)="sortBooks('borrowed')">Show Borrowed</button>
       <button (click)="resetBooks()">Reset</button>
     </div>
     

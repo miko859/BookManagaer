@@ -196,7 +196,6 @@ margin-right: auto;
   border-radius: 8px;
   width: 300px;
   text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .modal-actions button {
@@ -207,12 +206,12 @@ margin-right: auto;
 }
 
 .modal-actions button:first-child {
-  background-color: #dc3545;
+  background-color: #fe6868;
   color: white;
 }
 
 .modal-actions button:first-child:hover {
-  background-color: #c82333;
+  background-color: #ff1a1a;
 }
 
 .modal-actions button:last-child {
