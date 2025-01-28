@@ -1,7 +1,6 @@
-/* Main container */
 .book-page {
   padding: 20px;
-  background-color: #f9f9f9;
+  background: linear-gradient(135deg, #8090c3, #bab0bd);
   font-family: Arial, sans-serif;
 }
 
@@ -13,14 +12,24 @@ h2 {
 
 /* Sort options */
 .sort-options {
-  text-align: center;
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  width: 100%;
+  padding-bottom: 30px;
+}
+
+.sort-buttons button {
+  display: inline-flex; 
+  background-color: #dfb19b;
+  font-weight: bold;
+  gap: 10; 
+  font-size: 15px;
 }
 
 .sort-options button {
   margin: 0 10px;
   padding: 10px 20px;
-  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 5px;
@@ -28,63 +37,53 @@ h2 {
   transition: background-color 0.3s;
 }
 
-.sort-options button:hover {
-  background-color: #0056b3;
+.sort-buttons button:hover {
+  background-color: white;
+  color: #dfb19b;
 }
 
 /* Logout button */
-.logout-container {
-  text-align: right;
-  margin-bottom: 20px;
-}
+/* .logout-container , {
+  margin-left: auto; 
+} */
 
 .logout-button {
-  padding: 10px 20px;
-  background-color: #dc3545;
+  background-color: #fe6868;
   color: white;
   border: none;
-  border-radius: 5px;
+  padding: 8px 16px;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s;
+  font-size: 15px;
 }
-
 .logout-button:hover {
-  background-color: #c82333;
+  background-color: #ff1a1a;
 }
 
 /* Add book button */
 .add-book-button {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
+margin-right: auto;
 }
 
 .btn-add-book {
-  background-color: #28a745;
+  background-color: #4bce84;
   color: white;
-  border: none;
   border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 8px 16px;
+  font-size: 15px;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+  transition: background-color 0.3s;
 }
 
 .btn-add-book:hover {
-  background-color: #218838;
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-  transform: translateY(-3px);
+  background-color: #0bc53a;
 }
 
 .btn-add-book:active {
-  background-color: #1e7e34;
-  transform: translateY(0);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #0bc53a;
 }
 
-/* Book list */
 /* Book list */
 .book-list {
   display: flex;
@@ -101,7 +100,7 @@ h2 {
   padding: 20px;
   width: 250px;
   transition: transform 0.2s;
-  position: relative; /* Added to position the buttons */
+  position: relative; 
 }
 
 .book-card:hover {
@@ -111,8 +110,8 @@ h2 {
 .book-card h3 {
   margin-top: 0;
   color: #007bff;
-  position: relative; /* So the edit button can be placed relative to the title */
-  padding-right: 30px; /* Add some space for the pencil button */
+  position: relative; 
+  padding-right: 30px; 
 }
 
 .book-card p {
@@ -127,7 +126,7 @@ h2 {
 /* Styling for the edit and delete buttons */
 .book-actions {
   position: absolute;
-  top: 10px; /* Adjust to place the pencil above the trash can */
+  top: 10px; 
   right: 10px;
   display: flex;
   flex-direction: column;

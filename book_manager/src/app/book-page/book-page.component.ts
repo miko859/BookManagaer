@@ -28,7 +28,7 @@ export class BookPageComponent implements OnInit {
   isAdmin(): boolean {
     return this.authService.isAdmin();
   }
-
+  
   navigateToAddBook(): void {
     this.router.navigate(['/add-book']);
   }

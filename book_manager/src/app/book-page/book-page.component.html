@@ -2,17 +2,20 @@
   <h2>Books</h2>
 
   <div class="sort-options">
-    <button (click)="sortBooks('title')">Sort A-Z</button>
-    <button (click)="sortBooks('status')">Show Available</button>
-    <button (click)="resetBooks()">Reset</button>
-  </div>
+    <div *ngIf="isAdmin()" class="add-book-container">
+      <button class="btn-add-book" (click)="navigateToAddBook()">+</button>
+    </div>
 
-  <div class="logout-container">
-    <button class="logout-button" (click)="logout()">Log Out</button>
-  </div>
+    <div class="sort-buttons">
+      <button (click)="sortBooks('title')">Sort A-Z</button>
+      <button (click)="sortBooks('status')">Show Available</button>
+      <button (click)="resetBooks()">Reset</button>
+    </div>
+    
+    <div class="logout-container">
+      <button class="logout-button" (click)="logout()">Log Out</button>
+    </div>
 
-  <div *ngIf="isAdmin()" class="add-book-button">
-    <button class="btn-add-book" (click)="navigateToAddBook()">+ Add Book</button>
   </div>
 
   <div class="book-list">
@@ -22,18 +25,16 @@
       <p><strong>ISBN:</strong> {{ book.isbn }}</p>
       <p><strong>Status:</strong> {{ book.status?.name || 'Unknown' }}</p>
 
-      
       <div class="book-actions">
-        <button class="edit-button" (click)="navigateToUpdateBook(book.id)">
+        <button class="edit-button" *ngIf="isAdmin()" (click)="navigateToUpdateBook(book.id)">
           <i class="fa fa-pencil-alt"></i> 
         </button>
-        <button (click)="confirmDelete(book.id)" class="delete-button">
+        <button class="delete-button" *ngIf="isAdmin()" (click)="confirmDelete(book.id)">
           <i class="fa fa-trash"></i>
         </button>
       </div>
     </div>
   </div>
-
 
   <div class="modal" [ngClass]="{ 'show': isModalVisible }" (click)="closeModal()">
     <div class="modal-content" (click)="$event.stopPropagation()">
@@ -44,5 +45,5 @@
         <button (click)="closeModal()">Cancel</button>
       </div>
     </div>
-
+  </div>
 </div>
