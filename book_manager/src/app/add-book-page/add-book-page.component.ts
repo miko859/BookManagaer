@@ -38,7 +38,7 @@ export class AddBookPageComponent {
         },
         (error) => {
           console.error('Error adding book', error);
-          this.errorService.showError('Error adding book');
+          this.errorService.showError('The Status must be selected');
         }
       );
     } else {

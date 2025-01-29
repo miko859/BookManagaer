@@ -1,9 +1,8 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BookService } from '../services/book.service';
 import { Book, Status } from '../models/book.model';
-import {ErrorService} from "../services/error.service";
+import { ErrorService } from '../services/error.service';
 
 @Component({
   selector: 'app-admin-book-page',
@@ -41,6 +40,21 @@ export class AdminBookPageComponent implements OnInit {
   }
 
   updateBook(): void {
+    console.log('Update book called');
+
+    if (!this.book.isbn) {
+      console.log('ISBN is missing');
+      this.errorService.showError('ISBN is required.');
+      return;
+    }
+
+    if (!this.book.isbn.match(/^\d{8}$/)) {
+      console.log('ISBN is invalid');
+      this.errorService.showError('ISBN must be exactly 8 digits.');
+      return;
+    }
+
+    console.log('ISBN is valid');
     this.bookService.updateBook(this.book).subscribe(
       (response: Book) => {
         console.log('Book updated successfully', response);
@@ -48,9 +62,12 @@ export class AdminBookPageComponent implements OnInit {
       },
       (error: any) => {
         console.error('Error updating book', error);
+        this.errorService.showError('Error updating book');
       }
     );
   }
+
+
 
   deleteBook(): void {
     this.bookService.deleteBook(this.book.id).subscribe(

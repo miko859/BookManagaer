@@ -13,8 +13,12 @@ export class ErrorComponent implements OnInit {
 
   ngOnInit(): void {
     this.errorService.error$.subscribe((message: string | null) => {
+      console.log('ErrorComponent received error message:', message); // Add this
       this.errorMessage = message;
+
+      // Reset after 5 seconds
       setTimeout(() => this.errorMessage = null, 5000);
     });
   }
+
 }

@@ -23,7 +23,7 @@
           pattern="^\d{8}$"
           #isbn="ngModel"
         />
-        <div *ngIf="isbn.touched && isbn.invalid && bookForm.submitted" class="error-message">
+        <div *ngIf="isbn.touched && isbn.invalid" class="error-message">
           ISBN must be exactly 8 digits.
         </div>
       </div>

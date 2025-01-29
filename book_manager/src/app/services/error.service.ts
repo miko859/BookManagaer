@@ -9,6 +9,8 @@ export class ErrorService {
   error$ = this.errorSubject.asObservable();
 
   showError(message: string) {
+    console.log('ErrorService: showError called with message:', message); // Add this
     this.errorSubject.next(message);
   }
+
 }
