@@ -25,6 +25,7 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.POST, "/api/book/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.PUT, "/api/book/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.DELETE, "/api/book/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/api/**").hasRole("USER")
                         .anyRequest().authenticated()
                 );
         return http.build();
