@@ -1,0 +1,133 @@
+Inštalačná príručka: Nastavenie a spustenie REST servera na localhoste
+
+Požiadavky na prostredie
+
+Pred začatím nastavovania REST servera, uistite sa, že máte nasledujúce komponenty:
+
+Java Development Kit (JDK):
+
+Verzia: 17 alebo novšia
+
+Na stiahnutie: Oracle JDK alebo OpenJDK
+
+Spring Boot Framework:
+
+Závislosti budú automaticky spravované pomocou Maven alebo Gradle.
+
+Maven alebo Gradle (na buildovanie projektu):
+
+Na stiahnutie Maven: Maven
+
+Na stiahnutie Gradle: Gradle
+
+MySQL server (alebo iná databáza):
+
+Na stiahnutie: MySQL Community Server
+
+Nastavenie: Uistite sa, že beží na porte 3306.
+
+IDE (Integrated Development Environment):
+
+Odporúčané: IntelliJ IDEA, Eclipse alebo Visual Studio Code.
+
+Kroky na nastavenie
+
+1. Klonovanie projektu
+
+Otvorte terminál.
+
+Spustite príkaz:
+
+git clone <URL projektu>
+
+Prejdite do adresára projektu:
+
+cd <názov_projektu>
+
+2. Nastavenie databázy
+
+Spustite MySQL server.
+
+Prihláste sa do MySQL:
+
+mysql -u root -p
+
+Vytvorte databázu pre projekt:
+
+CREATE DATABASE book_manager;
+
+(Voliteľne) Importujte vopred pripravené tabuľky a dáta:
+
+mysql -u root -p book_manager < database_script.sql
+
+3. Nastavenie konfigurácie
+
+V adresári projektu otvorte súbor application.properties (alebo application.yml).
+
+Upravte nasledujúce riadky:
+
+spring.datasource.url=jdbc:mysql://localhost:3306/book_manager
+spring.datasource.username=root
+spring.datasource.password=<heslo>
+spring.jpa.hibernate.ddl-auto=update
+
+4. Buildovanie projektu
+
+Ak používate Maven:
+
+mvn clean install
+
+Ak používate Gradle:
+
+gradle build
+
+5. Spustenie servera
+
+Spustite aplikáciu pomocou príkazu:
+
+mvn spring-boot:run
+
+alebo
+
+java -jar target/<nazov-spring-boot-aplikacie>.jar
+
+Overte, že server beží na adrese http://localhost:8080.
+
+Testovanie REST API
+
+Použite nástroj ako Postman alebo cURL na testovanie API:
+
+GET Požiadavka:
+
+curl -X GET http://localhost:8080/api/books
+
+POST Požiadavka:
+
+curl -X POST http://localhost:8080/api/books \
+-H "Content-Type: application/json" \
+-d '{"title": "Sample Book", "author": "John Doe"}'
+
+Kontrola výsledku:
+Očakávaný stavový kód: 200 OK alebo 201 Created.
+
+Riešenie problémov
+
+Databáza nie je dostupná:
+
+Skontrolujte, či je MySQL server spustený.
+
+Overte nastavenia pripojenia v application.properties.
+
+Server neodpovedá:
+
+Overte, či aplikácia beží bez chýb v termináli.
+
+Skontrolujte, či iný proces neblokuje port 8080.
+
+Chyba pri buildovaní projektu:
+
+Uistite sa, že máte nainštalovanú správnu verziu JDK.
+
+Spustite príkaz mvn dependency:resolve pre Maven alebo gradle dependencies pre Gradle.
+
+Po úspešnom spustení servera môžete začať pracovať na integrácii s frontendom alebo na testovaní API pomocou nástrojov ako Postman.
