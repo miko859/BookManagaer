@@ -91,7 +91,7 @@ alebo
 
 java -jar target/<nazov-spring-boot-aplikacie>.jar
 
-Overte, že server beží na adrese http://localhost:8080.
+Overte, že server beží na adrese http://localhost:52307.
 
 Testovanie REST API
 
@@ -103,7 +103,7 @@ curl -X GET http://localhost:8080/api/books
 
 POST Požiadavka:
 
-curl -X POST http://localhost:8080/api/books \
+curl -X POST http://localhost:52307/api/books \
 -H "Content-Type: application/json" \
 -d '{"title": "Sample Book", "author": "John Doe"}'
 
